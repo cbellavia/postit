@@ -25,10 +25,4 @@
     <li><a tabindex="-1" href="#">Separated link</a></li>
   </ul>
  </li>
- <li>
- 	<%= form_tag({:controller => "posts", :action => "search"}, :method => "get", :class => "navbar-form") do %>
- 		 <%= text_field_tag(:q, '', :class => "input-medium search-query", :placeholder => "Search") %>
- 		 <%= submit_tag("Search", :class => "btn") %>
-	<% end %>
- </li>
 </ul>

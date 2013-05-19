@@ -38,5 +38,16 @@ class PostsController < ApplicationController
       redirect_to :edit
     end
   end
+  
+  def search
+    searchstring = "%#{params[:q]}%"
+    @posts = Post.where("description like ? or title like ? or url like ?", searchstring, searchstring, searchstring )
+    if @posts.count > 0
+      flash.now[:notice] = "Your search returned #{@posts.count} results"
+    else
+      flash.now[:warning] = "Your search didn't return any results"
+    end
+    render :index
+  end
 
 end
