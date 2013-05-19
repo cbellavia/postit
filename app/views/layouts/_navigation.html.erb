@@ -1,0 +1,28 @@
+<ul class="nav">
+  <li>
+    <%= link_to "Postit!", root_path, :class => 'brand' %>
+  </li>
+  <li>
+    <%= link_to 'link', '' %>
+  </li>
+  <li><%= link_to "Posts", posts_path %></li>
+<li class="dropdown">
+	<%= link_to 'Posts <b class="caret"></b>'.html_safe, posts_path, {:class => 'dropdown-toggle', "data-toggle" => 'dropdown'} %>
+  <!-- Link or button to toggle dropdown -->
+  <ul class="dropdown-menu"  role="menu" aria-labelledby="dLabel">
+    <li><a tabindex="-1" href="#">Action</a></li>
+	<li><%= link_to "Create a Post", new_post_path, {"tab-index" => "-1"} %></li>
+    <li><a tabindex="-1" href="#">Another action</a></li>
+    <li class="dropdown-submenu"><a tabindex="-1" href="#">Something else here</a>
+		<ul class="dropdown-menu">
+			<li><%= link_to "Create a Post", new_post_path %></li>
+			<li><a tabindex="-1" href="#">how are you</a></li>
+			<li><a tabindex="-1" href="#">hello</a></li>
+		</ul>
+		
+	</li>
+    <li class="divider"></li>
+    <li><a tabindex="-1" href="#">Separated link</a></li>
+  </ul>
+ </li>
+</ul>

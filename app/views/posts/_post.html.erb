@@ -1,0 +1,10 @@
+<div class="span8 well">
+	<%# binding.pry %>
+	<h4><%= link_to post.title, post.url, :target => :blank  %> <%= link_to "edit", edit_post_path(post), {:class => 'btn btn-primary'} %></h4>
+	<p><%= post.description%></p>
+	<p><span>Posted by: </span><%= post.user.username%> at <small><%= post.created_at.to_s%></small></p>
+	<p><%= link_to "#{post.comments.count} comments", post_path(post) %></p>
+</div>
+
+
+
