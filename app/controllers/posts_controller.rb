@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_filter :require_user, :except => [:index, :show, :search]
   
   def index
-    @posts = Post.all
+    @posts = Post.all.reverse
   end
   
   def new
@@ -43,7 +43,7 @@ class PostsController < ApplicationController
   
   def search
     searchstring = "%#{params[:q]}%"
-    @posts = Post.where("description like ? or title like ? or url like ?", searchstring, searchstring, searchstring )
+    @posts = Post.where("description like ? or title like ? or url like ?", searchstring, searchstring, searchstring ).reverse
     if @posts.count > 0
       flash.now[:notice] = "Your search returned #{@posts.count} results"
     else
