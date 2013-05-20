@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
   end
   
   def logged_in?
+    # !! will always return either true or false
     !!current_user
   end
 end
