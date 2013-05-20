@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_filter :require_user, :except => [:index, :show, :search]
+  
   def index
     @posts = Post.all
   end
@@ -9,7 +11,7 @@ class PostsController < ApplicationController
   
   def create
     @post = Post.new(params[:post])
-    @post.user = User.find(rand(User.count) + 1)
+    @post.user = current_user
     if @post.save
       flash[:notice] = "Congratulation!  Your post was saved"
       @posts = Post.all

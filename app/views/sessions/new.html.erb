@@ -1,0 +1,12 @@
+<div class="row span4 offset2 well">
+	<h4>Sign into your account</h4>
+<%= form_tag '/login' do %>
+	<%= label_tag(:username) %>
+	<%= text_field_tag(:username) %>
+	<%= label_tag(:password) %>
+	<%= password_field_tag(:password) %>
+	<div class="actions">
+	<%= submit_tag("Log in", :class => "btn btn-success") %>
+	</div>
+<% end %>
+</div>

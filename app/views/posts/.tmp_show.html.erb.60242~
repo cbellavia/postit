@@ -3,10 +3,8 @@
 	<h4>Comments</h4>
 </div>
 <div class="span8 well">
-	<% if logged_in? %>
 	<%= render "/comments/form" %>
-	<% else %>
-	<p>Want to comment?  <%= link_to "Sign in", login_path %> or <%= link_to "Register", new_user_path %></p>
-	<% end %>
 	<%= render @post.comments.reverse %>
 </div>
+
+

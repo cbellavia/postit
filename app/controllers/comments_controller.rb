@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   def create
     #binding.pry
     @comment = Comment.new(params[:comment])
-    @comment.user = User.find(rand(User.count) + 1)
+    @comment.user = current_user
     @comment.post_id = params[:post_id]
     if @comment.save
       flash[:notice] = "Great!  Thanks for your comment!"

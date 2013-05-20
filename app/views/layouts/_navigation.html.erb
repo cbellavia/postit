@@ -2,11 +2,11 @@
   <li>
     <%= link_to "Postit!", root_path, :class => 'brand' %>
   </li>
-  <li>
-    <%= link_to 'link', '' %>
-  </li>
   <li><%= link_to "Posts", posts_path %></li>
-<li class="dropdown">
+  <% if logged_in? %>
+  <li><%= link_to "Create a Post", new_post_path, {"tab-index" => "-1"} %></li>
+  <% end %>
+<li class="dropdown" style="display:none;">
 	<%= link_to 'Posts <b class="caret"></b>'.html_safe, posts_path, {:class => 'dropdown-toggle', "data-toggle" => 'dropdown'} %>
   <!-- Link or button to toggle dropdown -->
   <ul class="dropdown-menu"  role="menu" aria-labelledby="dLabel">
@@ -25,10 +25,18 @@
     <li><a tabindex="-1" href="#">Separated link</a></li>
   </ul>
  </li>
+ 
  <li>
  	<%= form_tag({:controller => "posts", :action => "search"}, :method => "get", :class => "navbar-form") do %>
  		 <%= text_field_tag(:q, '', :class => "input-medium search-query", :placeholder => "Search") %>
  		 <%= submit_tag("Search", :class => "btn") %>
 	<% end %>
  </li>
+ <% if logged_in? %>
+ 	<li><a tabindex="-1" href="#">Signed in as <%= current_user.username %></a></li>
+ 	<li><%= link_to "Log out", logout_path %>
+ <% else %>
+ <li><%= link_to "Register", new_user_path %>
+ <li><%= link_to "Log in", login_path %></li>
+ <% end %>
 </ul>
