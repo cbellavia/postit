@@ -1,6 +1,6 @@
 <ul class="nav">
   <li>
-    <%= link_to "Postit - Rec Sports!", root_path, :class => 'brand' %>
+    <%= link_to "Postit!", root_path, :class => 'brand' %>
   </li>
   <li><%= link_to "Posts", posts_path %></li>
   <% if logged_in? %>
