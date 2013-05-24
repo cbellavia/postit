@@ -1,10 +1,26 @@
-<div class="span8 well">
-	<%# binding.pry %>
-	<h4><%= link_to post.title, post.url, :target => :blank  %> <% if current_user == post.user %><%= link_to "edit", edit_post_path(post), {:class => 'btn btn-primary'} %><% end %></h4>
-	<p><%= post.description%></p>
-	<p><span>Posted by: </span><%= post.user.username%> at <small><%= post.created_at.to_s%></small></p>
-	<p><%= link_to "#{post.comments.count} comments", post_path(post) %></p>
+<div class="row">
+<div class="span0 well">
+	<h6>Votes</h6>
+	<p><%= link_to "<i class='icon-thumbs-up'></i>(#{post.up_votes})".html_safe, vote_post_path(post, vote: true), method: :post %></p>
+	<p><%= link_to "<i class='icon-thumbs-down'></i>(#{post.down_votes})".html_safe, vote_post_path(post, vote: false), method: :post %></p>
 </div>
-
+<div class="span8 well">
+	<h4><%= link_to post.title, make_url(post.url), :target => :blank  %> <% if current_user == post.user %><%= link_to "edit", edit_post_path(post), {:class => 'btn btn-primary'} %><% end %></h4>
+	<p><%= post.description%></p>
+	<small><p class="muted"><span>Posted by: </span><%= post.user.username%> at <%= post.created_at.to_s%></small></p>
+	
+	
+	<% if @mode && @mode == "show" %>
+		<% if logged_in? %>
+			<%= render "/comments/form" %>
+		<% else %>
+			<p>Want to comment?  <%= link_to "Sign in", login_path %> or <%= link_to "Register", new_user_path %></p>
+		<% end %>
+	<% else %>
+		<p><%= "#{post.comments.count}"%> comments... <%= link_to "View Details", post_path(post, mode: "show") %></p>
+	<% end%>
+	
+</div>
+</div>
 
 

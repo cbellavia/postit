@@ -28,6 +28,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
+    @mode = params[:mode]
   end
   
   def update
@@ -37,7 +38,7 @@ class PostsController < ApplicationController
       @posts = Post.all
       redirect_to @post
     else
-      redirect_to :edit
+      render :edit
     end
   end
   
@@ -50,6 +51,17 @@ class PostsController < ApplicationController
       flash.now[:warning] = "Your search didn't return any results"
     end
     render :index
+  end
+  
+  def vote
+    post = Post.find(params[:id])
+    vote = Vote.new(votable: post, user: current_user, vote: params[:vote])
+    if vote.save
+      flash[:notice] = "Thanks for your vote!"
+    else
+      flash[:warning] = "Uh oh.  For some reason we couldn't record your vote"
+    end
+    redirect_to posts_path
   end
 
 end

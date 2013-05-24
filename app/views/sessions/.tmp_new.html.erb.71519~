@@ -8,6 +8,5 @@
 	<div class="actions">
 	<%= submit_tag("Log in", :class => "btn btn-success") %>
 	</div>
-	<div style="margin-top:10px;"><p><small>Don't have an account? <%= link_to "Click here to register", new_user_path %></small></p></div>
 <% end %>
 </div>

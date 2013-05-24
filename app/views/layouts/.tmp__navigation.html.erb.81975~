@@ -1,13 +1,13 @@
 <ul class="nav">
   <li>
-    <%= link_to "Postit!", root_path, :class => 'brand' %>
+    <%= link_to "Postit - Rec Sports!", root_path, :class => 'brand' %>
   </li>
   <li><%= link_to "Posts", posts_path %></li>
   <% if logged_in? %>
   <li><%= link_to "Create a Post", new_post_path, {"tab-index" => "-1"} %></li>
   <% end %>
-<li class="dropdown" style="display:none;">
-	<%= link_to 'Posts <b class="caret"></b>'.html_safe, posts_path, {:class => 'dropdown-toggle', "data-toggle" => 'dropdown'} %>
+<li class="dropdown"">
+	<%= link_to 'Posts <b class="caret"></b>'.html_safe, posts_path, {:class => 'dropdown-toggle', 'data-target' => "#{posts_path}","data-hover" => 'dropdown' , "data-delay" => '500', "data-close-others" => 'false'} %>
   <!-- Link or button to toggle dropdown -->
   <ul class="dropdown-menu"  role="menu" aria-labelledby="dLabel">
     <li><a tabindex="-1" href="#">Action</a></li>

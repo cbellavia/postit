@@ -2,27 +2,26 @@
   <li>
     <%= link_to "Postit - Rec Sports!", root_path, :class => 'brand' %>
   </li>
-  <li><%= link_to "Posts", posts_path %></li>
-  <% if logged_in? %>
-  <li><%= link_to "Create a Post", new_post_path, {"tab-index" => "-1"} %></li>
-  <% end %>
-<li class="dropdown" style="display:none;">
-	<%= link_to 'Posts <b class="caret"></b>'.html_safe, posts_path, {:class => 'dropdown-toggle', "data-toggle" => 'dropdown'} %>
+  <!--<li><%#= link_to "Posts", posts_path %></li>
+  <%# if logged_in? %>
+  <li><%#= link_to "Create a Post", new_post_path, {"tab-index" => "-1"} %></li>
+  <%# end %>
+  -->
+<li class="dropdown"">
+	<%= link_to 'Posts <b class="caret"></b>'.html_safe, posts_path, {:class => 'dropdown-toggle', 'data-target' => "#{posts_path}","data-hover" => 'dropdown' , "data-delay" => '500', "data-close-others" => 'false'} %>
   <!-- Link or button to toggle dropdown -->
   <ul class="dropdown-menu"  role="menu" aria-labelledby="dLabel">
-    <li><a tabindex="-1" href="#">Action</a></li>
 	<li><%= link_to "Create a Post", new_post_path, {"tab-index" => "-1"} %></li>
-    <li><a tabindex="-1" href="#">Another action</a></li>
-    <li class="dropdown-submenu"><a tabindex="-1" href="#">Something else here</a>
+    <li class="dropdown-submenu"><%= link_to 'My Posts', posts_path, {'data-target' => "#{posts_path}"}%>
 		<ul class="dropdown-menu">
 			<li><%= link_to "Create a Post", new_post_path %></li>
-			<li><a tabindex="-1" href="#">how are you</a></li>
-			<li><a tabindex="-1" href="#">hello</a></li>
+			<li><a tabindex="-1" href="#">Just testing</a></li>
+			<li><a tabindex="-1" href="#">Submenus</a></li>
 		</ul>
 		
 	</li>
-    <li class="divider"></li>
-    <li><a tabindex="-1" href="#">Separated link</a></li>
+    <!--<li class="divider"></li>
+    <li><a tabindex="-1" href="#">Separated link</a></li>-->
   </ul>
  </li>
  

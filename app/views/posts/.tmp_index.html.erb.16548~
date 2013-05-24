@@ -1,0 +1,2 @@
+<h5>You are on the posts index page</h5>
+<%= render @posts %>
