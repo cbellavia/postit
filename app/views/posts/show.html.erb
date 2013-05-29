@@ -1,8 +1,8 @@
-<%= render "post", :post => @post %>
+<%= render "post", :post => @post  %>
 
 <div class="span8 offset1">
 	<div>
 		<h4>Comments</h4>
 	</div>
-	<%= render @post.comments.reverse %>
+	<%= render @post.comments.reverse, :post => @post %>
 </div>

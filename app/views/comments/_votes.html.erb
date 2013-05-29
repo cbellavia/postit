@@ -1,0 +1,3 @@
+
+<%= link_to "<i class='icon-thumbs-up'></i>(#{comment.up_votes})".html_safe, post_comment_vote_path(comment.post, comment, vote: true), method: :post, remote: true %><br/>
+<%= link_to "<i class='icon-thumbs-down'></i>(#{comment.down_votes})".html_safe, post_comment_vote_path(comment.post, comment, vote: false), method: :post, remote: true %>

@@ -1,7 +1,8 @@
 	<div class="row">
 		<div class="span0 well">
-			<%= link_to "<i class='icon-thumbs-up'></i>(#{comment.up_votes})".html_safe, post_comment_vote_path(comment.post, comment, vote: true), method: :post %><br/>
-			<%= link_to "<i class='icon-thumbs-down'></i>(#{comment.down_votes})".html_safe, post_comment_vote_path(comment.post, comment, vote: false), method: :post %>
+			<span id="post_<%= comment.id %>_votes">
+				<%= render "/comments/votes", :comment => comment %>
+			</span>
 		</div>
 		<div class="span6 well">
 			<p><%= comment.body %></p>

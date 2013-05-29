@@ -18,15 +18,19 @@ class CommentsController < ApplicationController
   
   def vote
     #binding.pry
-    comment = Comment.find(params[:comment_id])
+    @comment = Comment.find(params[:comment_id])
     post = Post.find(params[:post_id])
-    vote = Vote.new(votable: comment, user: current_user, vote: params[:vote])
+    vote = Vote.new(votable: @comment, user: current_user, vote: params[:vote])
     if vote.save
       flash[:notice] = "Thanks for your vote!"
     else
       flash[:warning] = "Uh oh.  For some reason we couldn't record your vote"
     end
-    redirect_to post_path(post)
+    respond_to do |format|
+      format.html { redirect_to post_path(post) }
+      format.js
+    end
+    
   end
   
 end

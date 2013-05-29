@@ -1,14 +1,14 @@
 <div class="row">
-<div class="span0 well">
+<div class="span0 well" >
 	<h6>Votes</h6>
-	<p><%= link_to "<i class='icon-thumbs-up'></i>(#{post.up_votes})".html_safe, vote_post_path(post, vote: true), method: :post %></p>
-	<p><%= link_to "<i class='icon-thumbs-down'></i>(#{post.down_votes})".html_safe, vote_post_path(post, vote: false), method: :post %></p>
+	<span id="post_<%=post.id%>_votes">
+		<%= render "votes", :post => post %>
+	</span>
 </div>
 <div class="span8 well">
 	<h4><%= link_to post.title, make_url(post.url), :target => :blank  %> <% if current_user == post.user %><%= link_to "edit", edit_post_path(post), {:class => 'btn btn-primary'} %><% end %></h4>
 	<p><%= post.description%></p>
 	<small><p class="muted"><span>Posted by: </span><%= post.user.username%> at <%= post.created_at.to_s%></small></p>
-	
 	
 	<% if @mode && @mode == "show" %>
 		<% if logged_in? %>

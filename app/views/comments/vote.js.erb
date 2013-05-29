@@ -1,0 +1,3 @@
+$('#messages').html("<%= j render(:partial => '/layouts/messages') %>");
+<% comment = @comment %>
+$('#post_<%= comment.id %>_votes').html("<%= j render(:partial => '/comments/votes', :locals => { :comment => @comment } ) %>");

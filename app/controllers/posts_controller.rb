@@ -54,14 +54,18 @@ class PostsController < ApplicationController
   end
   
   def vote
-    post = Post.find(params[:id])
-    vote = Vote.new(votable: post, user: current_user, vote: params[:vote])
+    @post = Post.find(params[:id])
+    vote = Vote.new(votable: @post, user: current_user, vote: params[:vote])
     if vote.save
-      flash[:notice] = "Thanks for your vote!"
+      flash.now[:notice] = "Thanks for your vote!"
     else
-      flash[:warning] = "Uh oh.  For some reason we couldn't record your vote"
+      flash.now[:warning] = "Uh oh.  For some reason we couldn't record your vote"
     end
-    redirect_to posts_path
+    respond_to do |format|
+      format.html { redirect_to posts_path }
+      format.js
+    end
+    
   end
 
 end
