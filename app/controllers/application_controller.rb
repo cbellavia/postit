@@ -5,10 +5,15 @@ class ApplicationController < ActionController::Base
   
   def require_user
     unless logged_in?
-      flash[:error] = "Before you do that...Please sign in or register."
+      
       respond_to do |format|
-       format.html { redirect_to login_path }
-       format.js { render "/sessions/sign_in"}
+       format.html { 
+        flash[:error] = "Before you do that...Please sign in or register."
+        redirect_to login_path 
+        }
+       format.js { 
+        flash.now[:error] = "Before you do that...Please sign in or register."
+        render "/sessions/sign_in"}
       end
       
     end
