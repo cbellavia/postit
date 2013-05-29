@@ -28,7 +28,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
-    @mode = params[:mode]
+    @mode = "show"  #params[:mode]
   end
   
   def update
